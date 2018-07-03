@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>xkui</title>
+</head>
+
+<body>
+  <div id="app">
+    <xk-input-group :label="label" :value="input" @input="handleInput"></xk-input-group>
+  </div>
+  <!-- 一定要先引入vue，不然xkui安装不了 -->
+  <script src="https://cdn.bootcss.com/vue/2.5.16/vue.js"></script>
+  <!-- 需要相对路径，/dist/xkui.min.js 会定位到 file:///D:/dist/xkui.min.js -->
+  <script src="./dist/xkui.min.js"></script>
+  <script>
+    // 扩展构造器
+    const example = Vue.extend({
+      name: 'example',
+      data() {
+        return {
+          label: '你好',
+          input: '小可',
+        }
+      },
+      methods: {
+        handleInput(value) {
+          console.log(value);
+        }
+      },
+    });
+    // 挂载到app标签上
+    new example().$mount('#app');
+
+  </script>
+</body>
+
+</html>
